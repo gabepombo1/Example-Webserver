@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en-US">
+    <head>
+<style>
+    
+    *{
+        font-family: Lucida Console;
+    }
+    /* creates input fields that are full-width*/
+    input[type=text], input[type=password]{
+        width: 100%;
+        padding: 12px 20px;
+        margin: 8px 0;
+        display: inline-block;
+        border: 1px solid #ccc;
+        box-sizing: border-box;
+    }
+    button{
+        background-color: green;
+        color: black;
+        padding: 15px 25px;
+        margin: 10px 0;
+        border: none;
+        cursor: pointer;
+        width: 100%;
+    }
+
+    /*Change opacity on hover*/
+    button:hover{
+        opacity: 0.8;
+    }
+    .cancelButton{
+        width: auto;
+        padding: 15px 20px;
+        background-color: red;
+    }
+
+    .imagecontainer{
+        text-align: center;
+        margin: 30px 0 15px 0;
+        position: relative;
+    }
+
+    image.avatar{
+        width: 50%;
+        border-radius: 60%;
+    }
+
+    .logincontainer{
+        padding: 20px;
+    }
+
+    span.psw{
+
+        float: right;
+        padding-top: 18px;
+
+    }
+
+    body{
+        background-color: orange;
+    }
+
+    @media only screen and (max-width: 1000px){
+        body{
+
+            background-color: green;
+
+            }
+    }
+
+    @media only screen and (max-width: 300px){
+        body{
+
+            background-color: green;
+
+            }
+    }
+
+    /* Background/The Modal */
+    .loginmodal{
+        display: none;
+        position: fixed;
+        z-index: 1; /* sits on top layer */
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        overflow: auto;
+        background-color: yellow;
+        padding-top: 80px;
+    }
+
+    .loginmodalcontent{
+        background-color: beige;
+        margin: 10% auto 25% auto;
+        border: 3px solid gray;
+        width: 80%;
+    }
+
+    .closeButton{
+        position: absolute;
+        right: 35px;
+        top: 0;
+        color: black;
+        font-size: 45px;
+        font-weight: bold;
+    }
+
+    .closeButton:hover, .closeButton:focus{
+        color: orangered;
+        cursor: pointer;
+    }
+
+    .AnimateLogin{
+
+        -webkit-animation: animatezoom 0.3s;
+        animation: animatezoom 0.8s;
+
+    }
+
+    @-webkit-keyframes AnimateLogin{
+        from {-webkit-animation: scale(0)}
+        to {transform: scale(1);}
+    }
+    
+    @keyframes AnimateLogin {
+
+        from {transform: scale(0);}
+        to {transform: scale(1);}
+
+    }
+
+</style>
+</head>
+<body>
+
+    <button onclick="document.getElementById('id01').style.display='block'" style="width:auto;">Set Password</button>
+
+    <button onclick="document.getElementById('id02').style.display='block'" style="width:auto;">Check Password</button>
+
+    <div id="id01" class="loginmodal">
+
+        <form class="loginmodalcontent AnimateLogin" action="/action/set_phrase" method="post">
+
+            <input type="text" id="setphrase" name="setphrase">
+
+            <input type="submit" value="Submit">
+
+        </form>
+
+        <div class="imagecontainer">
+
+            <span onclick="document.getElementById('id01').style.display='none'" class="closeButton" title="Close Modal">&times;</span>
+
+        </div>
+
+    </div>
+
+    <div id="id02" class="loginmodal">
+
+        <form class="loginmodalcontent AnimateLogin" action="/action/check_phrase" method="post">
+
+            <input type="text" id="checkphrase" name="checkphrase">
+
+            <input type="submit" value="Submit">
+
+        </form>
+
+        <div class="imagecontainer">
+
+            <span onclick="document.getElementById('id02').style.display='none'" class="closeButton" title="Close Modal">&times;</span>
+
+        </div>
+
+    </div>
+
+</body>
+</html>

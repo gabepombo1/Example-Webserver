@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en-US">
+    <head>
+        <meta charset = "UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Electric Game Studios</title>
+        <style>
+            /*Make a log-in page that stores passwords as a hash and then salts the hash for an added layer of protection*/
+            /*errors to demonstrate: have a page on the website with buttons that open to different pages (404, 403, etc) pages, show some inputs that allow javascript execution, 
+            show a button that opens to a page that doesnt exist, ES6 compatibiity*/
+
+            *{
+                font-family: Lucida Console;
+            }
+            body{
+                background-color: orange;
+            }
+            @media only screen and (max-width: 1000px){
+                body{
+
+                    background-color: green;
+
+                }
+            }
+            il{
+                display: inline;
+            }
+            a{
+                display: block;
+                padding: 8px;
+                background-color: green;
+            }
+
+            .HTextbox{
+                width: 100%;
+                height: 100%;
+                border: 15px outset green;
+                background-color: orange;
+                text-align: center;
+                font-family: Lucida Console;
+                font-style: normal;
+                font-weight: bold;
+                line-height: 1.6;
+                padding: 35px 50px 35px 50px;
+                box-sizing: border-box;
+            }
+            .Bar{
+                border: 5px outset green;
+                background-color: orange;
+                text-align: left;
+            }
+            ul {
+                list-style-type: none;
+                margin: 0;
+                padding: 0;
+                width: 100%;
+            }
+            il a{
+                display: block;
+                color: green;
+                padding: 8px 16px;
+                text-decoration: none;
+            }
+            li a:hover{
+                background-color: orange;
+                color: green;
+            }
+            li a:active{
+                background-color: orange;
+                color: white
+            }
+            li a:hover:not(.active){
+                background-color: green;
+                color: orange;
+            }
+            .LudumDareBanner{
+                width: 100%;
+                height: 140px;
+                border: 20px green;
+                text-align: center;
+                position: fixed;
+                font-style: bold;
+                font-size: 40px;
+                color: red;
+                background-color: orange;
+                opacity: 0.5;
+                box-sizing: border-box;
+                z-index: 1;
+            }
+
+            /*Make some accordions for page selection and the rating for the game to show different ratings from different places*/
+            .CollapsibleGameProgress{
+                cursor: pointer;
+                width: 100%;
+                height: 100%;
+                border: 15px outset green;
+                background-color: orange;
+                text-align: left;
+                font-family: Lucida Console;
+                font-size: 40px;
+                box-sizing: border-box;
+            }
+            .CollapsibleGameProgressContent{
+                padding: 0 18px;
+                border: 7px outset green;
+                display: none;
+                overflow: hidden;
+                background-color: orange;
+            }
+
+            .Media{
+                width: 100%;
+                height: 100%;
+                border: 15px outset green;
+                background-color: orange;
+                text-align: center;
+                overflow: auto;
+                box-sizing: border-box;
+            }
+            #TopHeaderBar{
+                width: 100%;
+                height: 100%;
+                text-align: left;
+                font: 60px Lucida Console, bold;
+            }
+            #BottomBar{
+                width: 100%;
+                height: 100%;
+                border: 15px outset green;
+                /*margin: 10px 20px 10px 20px;*/
+                background-color: orange;
+                text-align: center;
+                font-family: Lucida Console;
+                font-size: 21px;
+                box-sizing: border-box;
+            }
+            #Note{
+                font-style: italic;
+            }
+            .GameTitle{
+                width: 100%;
+                height: 100%;
+                text-align: center;
+                background-color: black;
+            }
+            #Headers{
+                text-align: left;
+                font-size: 20;
+            }
+            #RatingBar{
+                /*Make this retrieve a "live" rating from the Ludum Dare posting; maybe make a collapsible that has the Ludum Dare posting and then two simulated postings from 
+                some placeholder website or some hidden webpage in the files, maybe even have that rating be random and get generated for every load of the website; make
+                a local rating that is updated by feedback/ratings given on the website itself*/
+                width: 100%;
+                height: 100%;
+                border: 15px outset green;
+                background-color: orange;
+                text-align: center;
+                font-family: Lucida Console;
+                font-size: 40px;
+                box-sizing: border-box;
+            }
+            h6{
+                text-decoration: underline overline;
+            }
+        </style>
+    </head>
+    <header id="TopHeader" class="Bar"> <div id="TopHeaderBar">Electric Games Studios</div></header>
+    
+    <body>
+        <div class="LudumDareBanner" href="https://ldjam.com">
+            <h3>Ludum Dare<h3>
+        </div>
+
+        <div class="GameTitle">
+        <img src="../images/Haywire_PNG.png" href="https://ldjam.com/events/ludum-dare/52/haywire"></img>
+        </div>
+
+        <button type="button" class="CollapsibleGameProgress">Click Here For Current Game Progress</button>
+        <div class="CollapsibleGameProgressContent">
+            <p>
+                Currently, the game is in a prototype phase.
+            </p>
+        </div>
+        
+        <script>
+            var collectionOfCollapsibles = document.getElementsByClassName("CollapsibleGameProgress");
+            var i;
+
+            for(i = 0; i < collectionOfCollapsibles.length; i++){
+                collectionOfCollapsibles[i].addEventListener("click", function(){
+                    this.classList.toggle("active");
+                    var content = this.nextElementSibling;
+
+                    if(content.style.display==="block"){
+                        content.style.display = "none";
+                    }
+                    else{
+                        content.style.display = "block";
+                    }
+                });
+            }
+        </script>
+
+        <ul>
+            <li><a href="http://localhost:8000">Assignment 5 Server and Stack Overflow API for final</a></li>
+            <li><a href="broken.html">Broken JS Examples Assignment 4</a></li>
+        </ul>
+
+        <div class="Media">
+            <h1>Gameplay Video</h1>
+            <video width="930" height="520" controls>
+                <source src="../videos/gameplayvideo.mp4" type="video/mp4">
+            </video>
+        </div>
+
+        <div class="Media">
+            <img src="https://static.jam.host/raw/856/d4/z/55639.png" alt = "Main Menu Screenshot"><br>
+        </div>
+
+        <div class="Media">
+            <img src="../images/gameplay.png" alt="GameplayImage" style ="width: auto;"><br>
+        </div>
+
+        <div id="RatingBar"> Rating: ?/10 </div>
+
+        <div class="HTextbox">
+            <h2>
+            Description:
+            <p>
+                This game is about a sane Harvester robot named Jank! All his robot buddies have gone Haywire! Including his big boss, Crank. 
+                All he can do now is defend himself. Perhaps if he builds himself up, he could eventually face the Mother AI responsible for all of this, and get to the bottom of it.
+            </p>
+            </h2>
+
+            <h2>
+                Instructions:
+                    <p>
+                    The game is played with the WASD keys.<br></p>
+                    "W" moves the bot forwards, "S" moves the bot backwards, "D" moves the bot to the right, "A" moves the bot to the left.
+                    </p>
+            </h2>
+
+            <h2 id="Note">
+                Note:
+                <p>
+                    The camera does not move. Turning off Adblock might help with the game not playing.
+                </p>
+            </h2>
+
+            <h1><a href="https://ldjam.com/">Other Ludum Dare Games</a></h1>
+                <dl>
+                    <dt><a href="https://ldjam.com/events/ludum-dare/52/an-amazing-game-probably">Current 1st Place:</a></dt>
+                    <dd>This is the current first place game for the 52nd game jam of Ludum Dare</dd>
+                </dl>
+        </div>
+    </body>
+
+    <body>
+        <div id="BottomBar"><h6><a href="#TopHeader">Top Of Page</a></h6></div>
+    </body>
+
+    <noscript>You need JavaScript enabled to use this website!</noscript>
+
+</html>
